@@ -67,6 +67,7 @@ function showContact(contactId, addressBook) {
   $(".phone-number").html(contact.phoneNumber);
   let buttons = $("#buttons");
   buttons.empty();
+  // using backticks and the special syntax with ${expression} is not jQuery, but a template literal. 
   buttons.append(`<button class='deleteButton' id='${contact.id}'>Delete</button>`);
 }
 
