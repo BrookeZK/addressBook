@@ -67,17 +67,15 @@ function showContact(contactId, addressBook) {
   $(".phone-number").html(contact.phoneNumber);
   let buttons = $("#buttons");
   buttons.empty();
-  buttons.append(`<button class='deleteButton ${contact.id}'>Delete</button>`);
+  buttons.append(`<button class='deleteButton' id='${contact.id}'>Delete</button>`);
 }
 
 function attachContactListeners(addressBook) {
   $("ul#contacts").on("click", "li", function() {
-    showContact($(this).attr("class"), addressBook);
+    showContact(this.className, addressBook);
   });
   $("#buttons").on("click", ".deleteButton", function() {
-    let id = $(this).attr("class"); // 'deleteButton 1'
-    let sanitizedId = id.slice(12); // 1
-    addressBook.deleteContact(sanitizedId); 
+    addressBook.deleteContact(this.id); 
     $("#show-contact").hide();
     displayContactDetails(addressBook); 
   });
